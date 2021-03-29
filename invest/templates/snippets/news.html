@@ -1,0 +1,42 @@
+
+<div class="card-header">
+    Top News {{ b.quote.companyName }}
+  </div>
+
+  <div class="card-deck">
+    <div class="card">
+      <img src="{{ b.news.0.image }}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <a href="{{ b.news.0.url }}"  class="card-title">{{ b.news.0.headline }}</a>
+        <br/> <br/>
+        <p class="card-text">{{ b.news.0.summary | truncatewords:30 }}</p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">{{ b.news.0.source }}</small>
+      </div>
+    </div>
+    <div class="card">
+        <img src="{{ b.news.1.image }}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <a href="{{ b.news.1.url }}"  class="card-title">{{ b.news.1.headline }}</a>
+          <br/> <br/>
+          <p class="card-text">{{ b.news.1.summary | truncatewords:30 }}</p>
+        </div>
+      <div class="card-footer">
+        <small class="text-muted">{{ b.news.1.source }}</small>
+      </div>
+    </div>
+    <div class="card">
+        <img src="{{ b.news.2.image }}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <a href="{{ b.news.2.url }}"  class="card-title">{{ b.news.2.headline }}</a>
+          <br/> <br/>
+          <p class="card-text">{{ b.news.2.summary | truncatewords:30 }}</p>
+        </div>
+      <div class="card-footer">
+        <small class="text-muted">{{ b.news.2.source }}</small>
+      </div>
+    </div>
+  </div>
+
+  <br/>  <br/>  <br/>

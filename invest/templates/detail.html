@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+
+
+{% if data %}
+    {% if data == 'Error' %}
+        There's a problem with core data, try again... 
+        {% elif logo_data == 'Error' %}
+        There's a problem with logo data, try again...
+        {% elif financial_data == 'Error' %}
+        There's a problem with financial data, try again...
+    {% else %}
+    <div class="media">   
+    <img src="{{ logo.url }}" class="align-self-center mr-3" alt="...">
+    <div class="media-body">
+      <br/><h1>  {{ companyName }} </h1><br/>
+    </div>
+  </div>
+        
+
+        {% if change < 0 %}
+        <h2 class="text-danger">
+        {% elif change > 0 %} 
+        <h2 class="text-success">
+        {% else %} 
+        <h2 class="text-muted">
+        {% endif %}
+        ${{ price }} <br/>
+        </h2>
+
+        {% if change < 0 %}
+        <p class="text-danger">
+        {% elif change > 0 %} 
+        <p class="text-success">
+        {% else %} 
+        <p class="text-muted">
+        {% endif %}
+        ${{ change }} ({{ changePercent }}) <br/><br/>
+        </p>
+        
+        {{ description }}<br/>
+
+        <br/><br/><br/>
+        <ul class="list-group list-group-horizontal-xl">
+            <li class="list-group-item">Market Cap: <br/><br/> {{ marketCap }}B  </li>
+            <li class="list-group-item">YTD Change:<br/><br/> {{ ytdChange }}</li>
+            <li class="list-group-item">52 WK High:<br/><br/> {{ week52High }}</li>
+            <li class="list-group-item">52 WK Low:<br/><br/> {{ week52Low }}</li>
+            <li class="list-group-item">PE Ratio:<br/><br/> {{ peRatio }}</li>
+            <br/>
+            <li class="list-group-item">Total Revenues:<br/><br/> {{ financials.totalRevenue }}</li>
+            <li class="list-group-item">Operating Income:<br/><br/> {{ financials.operatingIncome }}</li>
+            <li class="list-group-item">Net Income:<br/><br/> {{ financials.netIncome }}</li>
+            <li class="list-group-item">Gross Profit:<br/><br/> {{ financials.grossProfit }}</li>
+            <li class="list-group-item">Operating Expenses:<br/> <br/>{{ financials.operatingExpense }}</li>
+        </ul>
+        
+    {% endif %}
+{% endif %} 
+
+<br/><br/><br/>
+
+
+
+
+<div class="card-header">
+    Top News for {{ quote.companyName }}
+  </div>
+
+  <div class="card-deck">
+    <div class="card">
+      <img src="{{ news.0.image }}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <a href="{{ news.0.url }}"  class="card-title">{{ news.0.headline }}</a>
+        <br/> <br/>
+        <p class="card-text">{{ news.0.summary | truncatewords:30 }} </p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">{{ news.0.source }}</small>
+      </div>
+    </div>
+    <div class="card">
+        <img src="{{ news.1.image }}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <a href="{{ news.1.url }}"  class="card-title">{{ news.1.headline }}</a>
+          <br/> <br/>
+          <p class="card-text">{{ news.1.summary | truncatewords:30 }} </p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">{{ news.1.source }}</small>
+        </div>
+    </div>
+    <div class="card">
+        <img src="{{ news.2.image }}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <a href="{{ news.2.url }}"  class="card-title">{{ news.2.headline }}</a>
+          <br/> <br/>
+          <p class="card-text">{{ news.2.summary | truncatewords:30 }} </p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">{{ news.2.source }}</small>
+        </div>
+    </div>
+  </div>
+<br/><br/>
+  {{ data }}
+{% endblock %}

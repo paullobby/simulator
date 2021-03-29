@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<section class='hero'>
+  <div class="jumbotron">
+    <h1 class="display-4">Welcome to SIS</h1>
+    <h3>{{ title }}</h3>
+    <p class="lead">Create your own virtual stock portfolio <br> Track profits and loss to show your investing potential with $300K starting fund</p>
+    <hr class="my-4">
+    <p>Sign up, get $300K virtual funds, and start investing today for free!</p>
+    <a class="btn btn-success btn-lg" href="#" role="button">See people's ranking</a>
+  </div>
+</section>
+
+here
+{{ data }}
+
+{% include 'templates/snippets/home_card.html' with instance=b %}
+
+
+
+
+{% endblock %}

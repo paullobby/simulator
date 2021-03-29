@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<h1>Featured on SIS Stock Investing Simulator</h1>
+
+{{ marketList }}
+
+<p>Search for stocks</p>
+<form action="{% url 'detail' %}" class="form-inline my-2 my-lg-0" method = 'POST'>
+    {% csrf_token %}
+    <input class="form-control mr-sm-2" type="search" placeholder="Search for stock" aria-label="Search" name='ticker'>
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form>
+
+<br/><br/><br/>
+<p>Check out our featured companies</p>
+<div class="d-flex align-items-stretch">
+
+    {% for b in blist %}
+    <div class='col-3'>
+        {{ forloop.counter }}.
+        {% include 'invest/templates/snippets/card.html' with instance=b %}
+        {% if forloop.counter|divisibleby:3  %}
+    </div></div><div class='row'><div class='col-12'><hr/></div>
+   {% elif forloop.counter|divisibleby:3  %}
+    </div></div><div class='row'><div class='col-12'><hr/></div> 
+    {% else %}
+    </div>
+    {% endif %}  
+{% endfor %}
+<br/><br/><br/>
+<br/><br/><br/>
+<br/><br/><br/>
+
+{% for b in blist %}
+<div class='col-12'>
+    {{ forloop.counter }}.
+    {% include 'invest/templates/snippets/news.html' with instance=b %}
+    {% if forloop.counter|divisibleby:3  %}
+</div></div><div class='col'><div class='col-12'><hr/></div>
+{% comment %} {% elif forloop.counter|divisibleby:3  %}
+</div></div><div class='col'><div class='col-12'><hr/></div> {% endcomment %}
+{% else %}
+</div>
+{% endif %}  
+{% endfor %}
+   
+</div>
+{% endblock %}

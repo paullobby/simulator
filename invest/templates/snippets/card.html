@@ -1,0 +1,29 @@
+
+{% widthratio b.quote.changePercent 1 100 as changePercent %}
+{% load humanize %}
+<div class="card-deck">
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h6 class="card-title"> {{ b.company.companyName  }}</h5>
+            
+            <br/>
+            <h6 class="card-subtitle mb-2 text-muted">{{ b.quote.symbol }}</h6>
+           
+            {% if b.quote.change < 0 %}
+            <p class="text-danger">
+            {% elif b.quote.change > 0 %} 
+            <p class="text-success">
+            {% else %} 
+            <p class="text-muted">
+            {% endif %}
+            Current Price: <br/>${{ b.quote.latestPrice }}
+            ({{ changePercent }}%)
+            </p>
+            <a href="#" class="card-link">Details</a>
+            <a href="#" class="card-link">Invest now</a>
+        </div>
+        <div class="card-footer">
+            <small class="text-muted">Last updated {{ b.quote.latestTime }} </small>
+          </div>
+     </div>
+</div>

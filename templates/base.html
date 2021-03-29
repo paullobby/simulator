@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% include 'base/css.html' %}
+    <title>SIS Stock Investing Simulator</title>
+  </head>
+
+
+  <body class="container-lg">
+    {% include 'navbar.html' %}
+    <div class='container'>
+
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-success" role="alert">
+            <button class='close' data-dismiss='alert'>
+              <small><sup>x</sup></small>
+            </button>
+            {{ message }}
+          </div><br/>
+        {% endfor %}
+      {% endif %}
+
+        {% block body %}
+        {% endblock %}
+    </div>
+    {% include 'base/js.html' %}
+    <canvas id="canvas"></canvas>
+  </body>
+</html>
